@@ -1,10 +1,24 @@
 import React from 'react';
-import { Header } from './layout';
+
+import { Content, Drawer, Topbar, Layout } from './layout';
 
 const App = () => {
-  return <div>
-    <Header />
-  </div>
-}
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  };
+
+  return (
+    <Layout>
+      <Topbar isDrawerOpen={isDrawerOpen} handleDrawerOpen={handleDrawerOpen} />
+      <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
+      <Content />
+    </Layout>
+  );
+};
 
 export default App;
