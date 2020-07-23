@@ -2,13 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-}))
+}));
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   const classes = useStyles();
 
   return (
@@ -17,6 +17,4 @@ const Layout = ({ children }) => {
       {children}
     </div>
   );
-};
-
-export default Layout;
+}
