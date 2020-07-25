@@ -34,7 +34,7 @@ const MENU_ITEMS = [
   { text: 'Completed', icon: <DoneIcon /> },
 ];
 
-export default function SideMenu() {
+export default function SideMenu({ children }) {
   const classes = useStyles();
 
   return (
@@ -47,14 +47,7 @@ export default function SideMenu() {
     >
       <Toolbar />
       <div className={classes.drawerContainer}>
-        <List>
-          {MENU_ITEMS.map((item) => (
-            <ListItem button key={item.text}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
+        {children}
       </div>
     </Drawer>
   );
