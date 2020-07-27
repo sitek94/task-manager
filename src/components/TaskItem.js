@@ -1,35 +1,72 @@
 import React from 'react';
-import { IconButton, ListItem, ListItemText } from '@material-ui/core';
-import { CheckBox, CheckBoxOutlineBlank as CheckBoxBlank, Delete } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import {
+  IconButton,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+} from '@material-ui/core';
+import {
+  CheckBox,
+  CheckBoxOutlineBlank as CheckBoxBlank,
+  Delete,
+} from '@material-ui/icons';
 import { green } from '@material-ui/core/colors';
+
 import { ICON_SIZE } from './App';
 
 /**
- * A single task item component
- * 
- * @param 
- * @param {String} description Description of the task.
- * @param {Boolean} completed The task is completed or not.
+ * A single task item
+ *
+ * @param {Number} id task unique id
+ * @param {String} text description of the task
+ * @param {Boolean} completed Task is either completed or not
+ * @param {Function} onClick Handles clicking on a task and on the checkbox icon
+ * @param {Function} onDeleteClick Handles clicking on the trash icon
  */
-export default function TaskItem({ description, completed }) {
-  const [checked, setChecked] = React.useState(completed);
+const TaskItem = ({
+  text,
+  completed,
+  onClick,
+  onDeleteClick
+}) => {
+  const handleClick = () => {
+    onClick()
+  };
+  const handleDeleteClick = () => onDeleteClick();
 
-  const handleToggle = () => {
-    setChecked(!checked);
+  const renderCheckboxIcon = () => {
+    if (completed) {
+      // Task is completed - render green checked icon
+      return <CheckBox style={{ color: green[500] }} fontSize={ICON_SIZE} />
+    }
+    // By default render unchecked icon
+    return <CheckBoxBlank fontSize={ICON_SIZE} />
   }
 
   return (
-    <ListItem button onClick={handleToggle}>
-      <IconButton edge="start" onClick={handleToggle}>
-        {checked && <CheckBox style={{ color: green[500] }} fontSize={ICON_SIZE} />}
-        {!checked && <CheckBoxBlank fontSize={ICON_SIZE} />}
+    <ListItem button onClick={handleClick}>
+      <IconButton edge="start" onClick={handleClick}>
+        {renderCheckboxIcon()}
       </IconButton>
-      <ListItemText
-        primary={description}
-      />
-      <IconButton edge="end" aria-label="add-taksk">
-        <Delete color="secondary" fontSize={ICON_SIZE} />
-      </IconButton>
+      <ListItemText primary={text} />
+      <ListItemSecondaryAction>
+        <IconButton
+          edge="end"
+          aria-label="delete the task"
+          onClick={handleDeleteClick}
+        >
+          <Delete color="secondary" fontSize={ICON_SIZE} />
+        </IconButton>
+      </ListItemSecondaryAction>
     </ListItem>
   );
-}
+};
+TaskItem.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  completed: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+export default TaskItem;
