@@ -12,7 +12,7 @@ import TaskItem from './TaskItem';
  * @param {Function} onTaskDeleteClick Deletes the task
  */
 const TaskList = ({ tasks, onTaskClick, onTaskDeleteClick }) => (
-  <List>
+  <List dense>
     {tasks.map((task) => {
       return (
         <TaskItem

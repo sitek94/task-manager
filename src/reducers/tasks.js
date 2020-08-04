@@ -8,25 +8,25 @@ const TASKS = [
   {
     userId: 1,
     id: 1,
-    text: "You can create new todos in the creator above",
+    text: "You can create new tasks in the creator above",
     completed: false
   },
   {
     userId: 1,
     id: 2,
-    text: "Mark todos as completed by clicking on the checkbox",
+    text: "Mark tasks as completed by clicking on the checkbox",
     completed: false
   },
   {
     userId: 1,
     id: 3,
-    text: "Filter todos in the sidebar on the left",
+    text: "Filter tasks in the sidebar on the left",
     completed: false
   },
   {
     userId: 1,
     id: 4,
-    text: "Delete todos by clicking on trash icon",
+    text: "Delete tasks by clicking on trash icon",
     completed: true
   },
 ]
