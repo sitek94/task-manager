@@ -45,6 +45,7 @@ const AddTask = ({ addTask }) => {
         id="outlined-basic"
         label="Task description"
         variant="outlined"
+        required
         fullWidth
       />
     </ListItem>

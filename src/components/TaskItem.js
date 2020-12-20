@@ -46,7 +46,7 @@ const TaskItem = ({
 
   return (
     <ListItem button onClick={handleClick}>
-      <IconButton edge="start" onClick={handleClick}>
+      <IconButton edge="start">
         {renderCheckboxIcon()}
       </IconButton>
       <ListItemText primary={text} />
